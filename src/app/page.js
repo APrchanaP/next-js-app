@@ -38,41 +38,21 @@
 //     return factorial;
 //   }
 
-// import React from "react";
-// import Link from "next/link";
-
-// export default function Home(){
-//   return (
-//     <div>
-//       <ul>
-//         <li>
-//           <Link href="/about" >about</Link>
-//           </li>
-//           <li>
-//           <Link href="/contact" >contact</Link>
-//         </li>
-//         </ul>
-//     </div>
-//   )
-// }
-
 import React from "react";
+import Link from "next/link";
 
-function Home({serverTime}){
-  return(
+export default function Home(){
+  return (
     <div>
-      <h1>
-        server-side rendering Example
-      </h1>
-      <p>Server-Time :{serverTime}</p>
+      <ul>
+        <li>
+          <Link href="/about"  className="about">about</Link>
+          </li>
+          <li>
+          <Link href="/contact" className="contact" >contact</Link>
+        </li>
+        </ul>
     </div>
   )
 }
 
-
-export async function getServerSideProps(){
-  const serverTime=new Date().toString();
-  return{props:{serverTime}};
-}
-
-export default Home;
