@@ -1,95 +1,78 @@
-import Image from 'next/image'
-import styles from './page.module.css'
 
-export default function Home() {
-  return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+"use client"; 
+// import React,{useEffect,useState,useMemo} from "react";
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+// export default function Home(){
+//    const [count,setCount]=useState(0);
+//    const [number, SetNumber] = useState(1);
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+//    const factorial = useMemo(() => ExpensiveCalculation(number), [number]);
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
+//     const factNumero = (e) => {
+//     console.log(e.target.value);
+//     SetNumber(Number(e.target.value));
+//   };
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
+//   useEffect(()=>{
+//     document.title =`Count:${count}`;
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+//    },[count]);
+//   return(
+//        <div>
+//            <p> Count:{count}</p>
+//            <button onClick={()=>setCount(count+1)}>Increment</button>
+//            <input type="text" onChange={factNumero} />
+//               {factorial}
+//        </div>
+     
+//   )
+// }
+
+// function ExpensiveCalculation(n) {
+
+//     let factorial = 1;
+
+//     for (let i = 1; i <= n; i++) {
+//       factorial = factorial * i;
+//     }
+//     return factorial;
+//   }
+
+// import React from "react";
+// import Link from "next/link";
+
+// export default function Home(){
+//   return (
+//     <div>
+//       <ul>
+//         <li>
+//           <Link href="/about" >about</Link>
+//           </li>
+//           <li>
+//           <Link href="/contact" >contact</Link>
+//         </li>
+//         </ul>
+//     </div>
+//   )
+// }
+
+import React from "react";
+
+function Home({serverTime}){
+  return(
+    <div>
+      <h1>
+        server-side rendering Example
+      </h1>
+      <p>Server-Time :{serverTime}</p>
+    </div>
   )
 }
+
+
+export async function getServerSideProps(){
+  const serverTime=new Date().toString();
+  return{props:{serverTime}};
+}
+
+export default Home;
